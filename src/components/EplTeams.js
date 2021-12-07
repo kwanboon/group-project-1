@@ -1,9 +1,14 @@
 import {useState} from "react";
+import API from "../components/API";
 
 function EplTeams(props) {
-    // const defaultState = null;
 
-    const [selectedTeam, setNewTeam] = useState(0);
+    const defaultState = {
+        id:33,
+        fixture:0,
+    };
+
+    const [selectedTeam, setNewTeam] = useState(defaultState);
 
     const eplTeamArray = [{
         id: 33,
@@ -27,22 +32,50 @@ function EplTeams(props) {
     }
     ];
 
+    let returndata = [];
+
+    async function fetchTeamFixtures() {
+            const response = await API.get("/fixtures", {params:{season:2021, team:selectedTeam.id, last:5}});
+            console.log ("Getting Fixtures data: ", selectedTeam.id);
+
+            if (response.status  === 200) {
+                returndata = response.data.response;
+            }
+            console.log("Team Fixture Data:", returndata);
+    
+        }
 
     function filterTeams(e) {
         e.preventDefault();
-        setNewTeam(e.target.value);
-        console.log("NewTeam:", selectedTeam);
+        setNewTeam(defaultState);
+        selectedTeam.id = e.target.value
+        console.log("NewTeamID:", selectedTeam.id);
 
+        fetchTeamFixtures();
+    }
 
+    function filterFixtures(e) {
+        e.preventDefault();
+        selectedTeam.fixture = e.target.value
+        console.log("Selected Fixture: ", selectedTeam.fixture);
     }
 
     return(
             <form>
-            <select onChange={filterTeams}>
-                {eplTeamArray.map((t) => 
-                <option value={t.id}>{t.name}</option>
-                )}
-            </select>
+                <div>
+                <select onChange={filterTeams}>
+                    {eplTeamArray.map((t) => 
+                    <option value={t.id}>{t.name}</option>
+                    )}
+                </select>
+                </div>
+                <div>
+                <select onChange={filterFixtures}>
+                    {returndata.map((t) => 
+                    <option value={t.id}>{t.date}</option>
+                    )}
+                </select>
+                </div>
             </form>
     );
  

@@ -5,7 +5,7 @@ import EplTeams from "../components/EplTeams";
 class TeamLineup extends React.Component {
     constructor() {
         super();
-        this.fetchTeamFixtures=this.fetchTeamFixtures.bind(this);
+        // this.fetchTeamFixtures=this.fetchTeamFixtures.bind(this);
         this.fetchTeamLineup=this.fetchTeamLineup.bind(this);
     
         //Set State in Class
@@ -16,23 +16,11 @@ class TeamLineup extends React.Component {
 
 
     componentDidMount() {
-        this.fetchTeamFixtures();
+        // this.fetchTeamFixtures();
         this.fetchTeamLineup();
         console.log("First Mount");
     }
 
-
-    async fetchTeamFixtures() {
-        const response = await API.get("/fixtures", {params:{season:2021, team:33, last:5}});
-        console.log ("Getting Fixtures data: ", response);
-
-        let returndata = [];
-        if (response.status  === 200) {
-            returndata = response.data;
-        }
-        console.log("Team Fixture Data:", returndata);
-
-    }
 
     async fetchTeamLineup() {
         const response = await API.get("/fixtures/lineups", {params:{fixture:710699}});
@@ -48,7 +36,7 @@ class TeamLineup extends React.Component {
     render(){
         return(
             <div className="lineup">
-                <EplTeams/>
+                <EplTeams />
 
             </div>
         )
