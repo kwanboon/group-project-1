@@ -1,43 +1,40 @@
 import React from "react";
-import API from "../components/API";
+// import API from "../components/API";
 import EplTeams from "../components/EplTeams";
+import Lineup from "../components/Lineup";
 
 class TeamLineup extends React.Component {
     constructor() {
         super();
-        // this.fetchTeamFixtures=this.fetchTeamFixtures.bind(this);
-        this.fetchTeamLineup=this.fetchTeamLineup.bind(this);
+        this.handleTeamFixture=this.handleTeamFixture.bind(this);
+        //this.fetchTeamLineup=this.fetchTeamLineup.bind(this);
     
         //Set State in Class
         this.state={
-            teamID: [],
+            fixtureID: null,
         }
     }
 
 
     componentDidMount() {
         // this.fetchTeamFixtures();
-        this.fetchTeamLineup();
+        // this.fetchTeamLineup();
         console.log("First Mount");
     }
 
-
-    async fetchTeamLineup() {
-        const response = await API.get("/fixtures/lineups", {params:{fixture:710699}});
-        console.log ("Getting Team Lineup data: ", response);
-
-        let returndata = [];
-        if (response.status  === 200) {
-            returndata = response.data;
-        }
-        console.log("Team Lineup Data:", returndata);
+    handleTeamFixture(addFixture) {
+        console.log("addFixture: ", addFixture)
+        // const fixtureID = [...this.state.fixtureID]
+        // fixtureID.push(addFixture);
+        this.setState({fixtureID:addFixture});
+        // console.log("FixtureID: ", this.state.fixtureID)
     }
 
     render(){
         return(
             <div className="lineup">
-                <EplTeams />
-
+                <EplTeams returnFix={this.handleTeamFixture}/>
+                <Lineup fixtureID={this.state.fixtureID}/>
             </div>
         )
     }
