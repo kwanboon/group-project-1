@@ -100,22 +100,22 @@ function EplTeams(props) {
     }
 
     console.log("Selected Fixture: ", selectedFixture);
-    return(
+    return(<>
+        <div className = "lineuptop">
             <form>
-                <div>
+                <div className="dropdown">
                 <select onChange={filterTeams}>
                     {eplTeamArray.map((t) => 
                     <option key={t.id} value={t.id}>{t.name}</option>
                     )}
                 </select>
-                </div>
-                <div>
                 <select onChange={filterFixtures}>
                     {displayListItems(listItems)}
-                </select>
-                </div>
+                </select>      
+                </div>  
             </form>
-    );
+        </div>
+    </>);
  
 }
 

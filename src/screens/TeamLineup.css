@@ -1,0 +1,28 @@
+.lineuptop {
+    padding: 20px;
+}
+.lineupbottom {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    /* padding: 10px; */
+}
+.teams {
+    padding: 20px;
+}
+
+.teams ul {
+    list-style-type: none;
+    /* text-align: left; */
+    margin:0;
+    padding:0;
+}
+
+.teams img {
+    width: 100px;
+}
+
+.dropdown select {
+   padding-left: 10px;
+   margin-left: 10px;
+}
