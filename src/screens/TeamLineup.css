@@ -1,14 +1,19 @@
 .lineuptop {
     padding: 20px;
+    margin: auto;
 }
+
 .lineupbottom {
     display: flex;
     flex-direction: row;
     /* justify-content: space-evenly; */
     /* padding: 10px; */
+
+
 }
 .teams {
-    padding: 20px;
+    padding: 0 20px 20px 20px;
+    margin: auto;
 }
 
 .teams ul {
@@ -19,7 +24,7 @@
 }
 
 .teams img {
-    width: 100px;
+    height: 100px;
 }
 
 .dropdown select {

@@ -4,12 +4,7 @@ import moment from "moment";
 
 function EplTeams(props) {
 
-    // const defaultState = {
-    //     id:33,
-    //     fixture:0,
-    // };
-
-    const [selectedTeam, setNewTeam] = useState(33);
+    const [selectedTeam, setNewTeam] = useState(0);
     const [selectedFixture, setNewFixture] = useState(0);
     const [listItems, setListItems] = useState([]);
 
@@ -50,7 +45,7 @@ function EplTeams(props) {
         const listItemsArray = listItems.map((t) => {
             const niceDate = moment(t.fixture.date).format("ddd, MMM Do YYYY");
             return (
-                <option key={t.fixture.id} value={t.fixture.id}>{niceDate}</option>
+                <option key={t.id} value={t.fixture.id}>{niceDate}</option>
             )}
         );
 
@@ -58,35 +53,30 @@ function EplTeams(props) {
     }
 
     async function fetchTeamFixtures() {
+        try {
             const response = await API.get("/fixtures", {params:{season:2021, team:selectedTeam, last:5}});
-            console.log ("Getting Fixtures data: ", selectedTeam);
 
             if (response.status  === 200) {
                 returndata = response.data.response;
+                console.log("2. Team Fixture Data: ", returndata);
             }
-            console.log("Team Fixture Data:", returndata);
 
-            console.log("List of Fixtures",
-                returndata.map((t) => 
-                    t.fixture.id
-                )
-            )
-            
             setListItems(returndata)
             // setNewFixture(returndata[0].fixture.id);
             if (returndata.length>0 && returndata[0].fixture) {
                 setNewFixture(returndata[0].fixture.id)
-             }
-
-            // console.log(listItems)
-        
+            }
+        } catch (error) {
+            console.log (error);
         }
+            
+    }
 
     function filterTeams(e) {
         e.preventDefault();
         setNewTeam(e.target.value);
         // selectedTeam.id = e.target.value
-        console.log("NewTeamID:", selectedTeam);
+        //console.log("1. TeamID selected: ", selectedTeam);
 
         fetchTeamFixtures();
     }
@@ -94,12 +84,13 @@ function EplTeams(props) {
     function filterFixtures(e) {
         e.preventDefault();
         setNewFixture(e.target.value);
-        // console.log("Selected Fixture: ", selectedFixture);
-        props.returnFix(selectedFixture);
+        console.log("3. Selected Fixture: ", e.target.value);
+        props.returnFix(e.target.value);
         // e.target.reset();
     }
 
-    console.log("Selected Fixture: ", selectedFixture);
+    console.log("Fixture State: ", selectedFixture);
+    console.log("1. TeamID selected: ", selectedTeam);
     return(<>
         <div className = "lineuptop">
             <form>
@@ -110,6 +101,7 @@ function EplTeams(props) {
                     )}
                 </select>
                 <select onChange={filterFixtures}>
+                    <option>Select a Fixture</option>
                     {displayListItems(listItems)}
                 </select>      
                 </div>  

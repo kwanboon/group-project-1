@@ -35,8 +35,6 @@ class TeamLineup extends React.Component {
     }
 
     componentDidMount() {
-        // this.fetchTeamFixtures();
-        // this.fetchTeamLineup();
         console.log("First Mount");
     }
 
@@ -59,14 +57,14 @@ class TeamLineup extends React.Component {
     renderelement(){
         if (this.state.lineUpArray.length > 0) {
             return (
-            <div className="container">
+            <div className="container5">
                 <EplTeams returnFix={this.handleTeamFixture}/>
                 <Lineup fixtureID={this.state.lineUpArray}/>
             </div>    
             )
         }
         return (
-            <div className="container">
+            <div className="container5">
             <EplTeams returnFix={this.handleTeamFixture}/>
             </div> 
         );
