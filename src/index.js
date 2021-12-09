@@ -5,6 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import TeamLineup from './screens/TeamLineup';
 import headerImage from './images/EPL.jpg';
+import Matches from "./screens/Matches"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,8 +13,7 @@ ReactDOM.render(
     <div className="header"><img src={headerImage} alt=""/></div>
     <div className="item2">Container 2</div>
     <div className="item3">Container 3</div>  
-    <div className="item4">Container 4</div>
-    {/* <div class="container5">5</div> */}
+    <Matches/>
     <TeamLineup />
     </div>
   </React.StrictMode>,
