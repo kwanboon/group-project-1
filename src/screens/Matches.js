@@ -9,8 +9,6 @@ class Matches extends React.Component {
   constructor(){
     super();
     this.fetchAllMatches = this.fetchAllMatches.bind(this);
-
-    //this.state in class component is set this way, has to be an object
     
     this.state = {
       matches: [],
@@ -106,7 +104,7 @@ class Matches extends React.Component {
                                     <table key={uuid()} className="match-table">
 
                                     <thead>
-                                            <th  colspan="4" className="match-date-header">{dateHeader}</th>
+                                            <th  colspan="4" className="match-date-header">{dateHeader}  {moment().format("YYYY")}</th>
                                     </thead>
 
                                     <tbody>
