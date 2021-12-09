@@ -9,8 +9,6 @@ class Matches extends React.Component {
   constructor(){
     super();
     this.fetchAllMatches = this.fetchAllMatches.bind(this);
-
-    //this.state in class component is set this way, has to be an object
     
     this.state = {
       matches: [],
@@ -52,7 +50,7 @@ class Matches extends React.Component {
     });
 
     function getLocalDate(date) {
-        return moment(date).utcOffset("+08:00").format("DD MMMM");
+        return moment(date).utcOffset("+08:00").format("DD MMMM YYYY");
     }
 
     function getLocalTime(time) {
@@ -63,7 +61,7 @@ class Matches extends React.Component {
         const list = {};
 
         for(let i=0; i<5; i++){
-            list[moment().add(i, 'days').format("DD MMMM")] = [];
+            list[moment().add(i, 'days').format("DD MMMM YYYY")] = [];
         }
 
         for (let i = 0; i < matches.length; i++) {
@@ -106,7 +104,7 @@ class Matches extends React.Component {
                                     <table key={uuid()} className="match-table">
 
                                     <thead>
-                                            <th  colspan="4" className="match-date-header">{dateHeader}</th>
+                                            <th  colspan="4" className="match-date-header">{dateHeader} | {moment(dateHeader).format("dddd")}</th>
                                     </thead>
 
                                     <tbody>

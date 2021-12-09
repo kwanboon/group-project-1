@@ -1,60 +1,59 @@
 /* .matches-container{ */
+
+h3{
+    margin-bottom: 5px;
+}
+
 .container4 {
     display: flex;
     flex-flow: column nowrap;
     text-align: center;
     margin: auto;
-    width: 100%
+    width: 100%;
     /* padding: 10px; */
 }
 
 .match-table{
-
     flex-wrap: nowrap;
     margin: auto;
     width: 100%;
+    min-width: 500px;
 }
 
 .match-date-header{
-
+    padding-top: 10px;
 }
 
 .match-details-row{
+    border: black 1px solid;
     display: flex;
-
     flex-flow: row nowrap;
-    
+    font-size: medium;
 }
 
 .match-time{
-
-    width: 20%;
+    width: 15%;
     padding: 10px 0;
 }
 
 .match-home-team{
-
     width: 20%;
     padding: 10px;
     text-align: left;
 }
 
 .vs{
-
-    width: 20%;
+    width: 15%;
     padding: 10px;
-
 }
 
 .match-away-team{
-
     width: 20%;
     padding: 10px;
     text-align: left;
 }
 
 .team-logo{
-
     max-height: 20px;
     padding: 10px;
 }
