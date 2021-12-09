@@ -39,6 +39,7 @@ function EplTeams(props) {
     
     useEffect(()=>{
         console.log("Team Changed");
+        fetchTeamFixtures();
     },[selectedTeam]);
 
     function displayListItems(listItems) {
@@ -78,7 +79,7 @@ function EplTeams(props) {
         // selectedTeam.id = e.target.value
         //console.log("1. TeamID selected: ", selectedTeam);
 
-        fetchTeamFixtures();
+        // fetchTeamFixtures();
     }
 
     function filterFixtures(e) {
