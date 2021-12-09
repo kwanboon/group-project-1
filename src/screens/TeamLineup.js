@@ -54,25 +54,15 @@ class TeamLineup extends React.Component {
         // this.fetchTeamLineup();
     }
 
-    renderelement(){
-        if (this.state.lineUpArray.length > 0) {
-            return (
-            <div className="container5">
-                <EplTeams returnFix={this.handleTeamFixture}/>
-                <Lineup fixtureID={this.state.lineUpArray}/>
-            </div>    
-            )
-        }
-        return (
-            <div className="container5">
-            <EplTeams returnFix={this.handleTeamFixture}/>
-            </div> 
-        );
-    }
-
     render() {
         return(<>
-            {this.renderelement()}
+            <div className="container5">
+                <h3>Past Fixtures and Lineups</h3>
+                <EplTeams returnFix={this.handleTeamFixture}/>
+                {this.state.lineUpArray.length > 0
+                ? <Lineup fixtureID={this.state.lineUpArray}/>
+                : <div></div>}
+            </div>
         </>)
     }
 }

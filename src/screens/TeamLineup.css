@@ -1,19 +1,24 @@
 .lineuptop {
-    padding: 20px;
+    /* padding: 20px; */
+    padding-bottom: 40px;
     margin: auto;
 }
 
 .lineupbottom {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-evenly; */
-    /* padding: 10px; */
-
+    padding-bottom: 40px;
+    display: inline-block;
+    vertical-align: top;
+    /* background-color: aliceblue; */
 
 }
 .teams {
-    padding: 0 20px 20px 20px;
+    padding: 20px 20px 20px 20px;
     margin: auto;
+    display: inline-block;
+    vertical-align: top;
+    /* background-color: aquamarine; */
 }
 
 .teams ul {
